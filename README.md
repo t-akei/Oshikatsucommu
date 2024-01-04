@@ -1,24 +1,30 @@
-# README
+# 推し活コミュ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
+自分の好きな事(趣味や分野など)を探せて、情報発信や他ユーザーとの交流もできるコミュニティサイト
 
-* Ruby version
+### テーマを選んだ理由
+私はアニメや漫画、また美味しい食べ物を探すのが好きです。
+しかし、情報が溢れるこの社会でその時欲しい情報を簡単に取得するのは難しいと感じました。そのため、情報を取得するのに使用したり、情報を得るとっかかりが得られるようなサイトがあれば便利かなと考えました。
+また情報取得以外に、情報発信や投稿内容について他者と意見交換ができた方が楽しめると思い、コメント機能を備えたコミュニティサイトにしようと考えました。
 
-* System dependencies
 
-* Configuration
+### ターゲットユーザー
+* 趣味などに関連した知りたい情報が簡単に欲しい人
+* 情報に関してユーザー同士で気軽に交流したい人
 
-* Database creation
+### 主な利用シーン
+* 自分の趣味や興味のある事、知りたい情報を検索で簡単に探したい時
+* 情報を検索するだけでなくユーザー同士で気軽にコメントを残して意見交換をしたい時
 
-* Database initialization
+## 設計書
 
-* How to run the test suite
+## 開発環境
+* OS：Ventura(MacOS)
+* 言語：HTML,CSS,Ruby,BootStrap,JavaScript,SQL
+* フレームワーク：Ruby on Rails
+* JSライブラリ：jQuery
+* IDE：Cloud9,EC2,RDS
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
