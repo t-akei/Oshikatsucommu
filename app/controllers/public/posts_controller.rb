@@ -1,8 +1,8 @@
-class PostsController < ApplicationController
+class Public::PostsController < ApplicationController
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new
     @post.user_id = current_user.id
@@ -18,12 +18,12 @@ class PostsController < ApplicationController
 
   def edit
   end
-  
+
   def update
   end
-  
+
   def destroy
   end
-  
-  
+
+
 end
