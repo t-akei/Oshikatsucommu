@@ -16,10 +16,10 @@
       <h2><strong>推し活コミュ！！</strong></h2>
       <% if user_signed_in? %>
 
-        <%= link_to ユーザー詳細ページ do %>
-          <i class="fa-solid fa-house"></i> My page
-        <% end %>
-        <%= link_to 投稿一覧パス do %>
+        <!--<%#= link_to ユーザー詳細ページ do %>-->
+        <!--  <i class="fa-solid fa-house"></i> My page-->
+        <!--<%# end %>-->
+        <%= link_to posts_path do %>
           <i class="fa-solid fa-paste"></i> Posts
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
