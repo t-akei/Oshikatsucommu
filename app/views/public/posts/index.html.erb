@@ -1,2 +1,23 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h4>Post一覧</h4>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <%= link_to user_path(post.user) do %>
+          <%= image_tag post.user.get_profile_image(80, 80), accept: "image/*" %>
+          <%= post.user.name %>
+        <% end %>
+      </td>
+      <td><%= post.title %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
