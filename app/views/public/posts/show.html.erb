@@ -3,10 +3,10 @@
   <tbody>
     <tr>
       <th>User</th>
-      <td><%= image_tag @post.user.get_profile_image(80, 80), accept: "image/*" %></td>
+      <td><%= image_tag @user.get_profile_image(80, 80), accept: "image/*" %></td>
       <td>
-        <%= link_to user_path(@post.user) do %>
-          <%= @post.user.name %>
+        <%= link_to user_path(@user) do %>
+          <%= @user.name %>
         <% end %>
       </td>
     </tr>
@@ -21,8 +21,11 @@
     <tr>
       <th>Text</th>
       <td><%= @post.body %></td>
-      <td><%= link_to "Edit", edit_post_oath(@post) %></td>
-      <td><%= link_to "Destroy", post_path(@post), method: :delete %></td>
+      
+      <% if @user = current_user %>
+        <td><%= link_to "Edit", edit_post_oath(@post) %></td>
+        <td><%= link_to "Destroy", post_path(@post), method: :delete %></td>
+      <% end %>
     </tr>
   </tbody>
 </table>
