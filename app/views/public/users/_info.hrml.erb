@@ -1,0 +1,23 @@
+<!--部分テンプレートファイル-->
+<h5>ユーザー情報</h5>
+<%= image_tag user.get_profile_image(100, 100) %>
+<table>
+  <tbody>
+    <tr>
+      <th>name</th>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <td><%= user.introduction %></td>
+    </tr>
+    <% if user == current_user %>
+      <tr>
+        <td><%= link_to "編集", edit_user_path(user) %></td>
+      </tr>
+      <tr>
+        <td><%= link_to "投稿する", new_post_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
