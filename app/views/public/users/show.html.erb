@@ -1,3 +1,6 @@
+
+<%= render 'info', user: @user %>
+
 <h4>Posts</h4>
 <table>
   <thead>
@@ -14,5 +17,6 @@
       <td><%= post.genre_id %></td>
       <td><%= post.body %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
