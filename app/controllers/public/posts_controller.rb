@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @user = User.find(params[:id])
   end
 
   def create
