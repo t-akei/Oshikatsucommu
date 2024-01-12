@@ -6,8 +6,10 @@ class Public::PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     post.user_id = current_user.id
-    post.save
-    redirect_to post_path(@post.id)
+    if post.save
+      flash[:notice] = "You have created post successfully"
+      redirect_to post_path(@post.id)
+    end
   end
 
   def show
@@ -25,8 +27,10 @@ class Public::PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to post_path(post.id)
+    if post.update(post_params)
+      flash[:notice] = "You have updated post successfully"
+      redirect_to post_path(post.id)
+    end
   end
 
   def destroy
