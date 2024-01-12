@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @post = Post.new
   end
@@ -9,6 +11,8 @@ class Public::PostsController < ApplicationController
     if post.save
       flash[:notice] = "You have created post successfully"
       redirect_to post_path(@post.id)
+    else
+      render :new
     end
   end
 
@@ -30,6 +34,8 @@ class Public::PostsController < ApplicationController
     if post.update(post_params)
       flash[:notice] = "You have updated post successfully"
       redirect_to post_path(post.id)
+    else
+      render :edit
     end
   end
 
