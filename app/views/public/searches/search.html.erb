@@ -1,0 +1,17 @@
+<h3>Posts search for "<%= @content %>"</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>User name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= image_tag post.user.get_profile_image %></td>
+      <td><%= post.user.name %></td>
+      <td><%= link_to "Show", post_path(post.id) </td>
+    </tr>
+  </tbody>
+</table>

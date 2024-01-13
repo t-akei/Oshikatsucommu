@@ -11,7 +11,12 @@ class Post < ApplicationRecord
     if method == 'perfect'
       Post.where(title: content, body: content)
     elsif method == 'forward'
-      Post.where('title LIKE ?', content + '%')
+      Post.where('title LIKE ? OR body LIKE ?', content + '%')
     elsif method == 'backward'
-      Post.where()
+      Post.where('title LIKE ? OR body LIKE ?', '%' + content)
+    else method == 'partial'
+      Post.where('title LIKE ? OR body LIKE ?', '%' + content + '%')
+    end
+  end
+
 end
