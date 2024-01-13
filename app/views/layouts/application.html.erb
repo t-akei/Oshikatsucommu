@@ -39,7 +39,10 @@
 
       <% end %>
     </header>
-    <%= yield %>
+    <main>
+      <%= render 'public/searches/form' %>
+      <%= yield %>
+    </main>
     <footer>
       <div class="container mt-5">
         <div class="row">
