@@ -7,11 +7,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @posts.each do |post| %>
+    <% @results.each do |result| %>
     <tr>
-      <td><%= image_tag post.user.get_profile_image %></td>
-      <td><%= post.user.name %></td>
-      <td><%= link_to "Show", post_path(post.id) </td>
+      <td><%= image_tag result.user.get_profile_image %></td>
+      <td><%= result.user.name %></td>
+      <td><%= link_to "Show", post_path(result.id) %></td>
     </tr>
   </tbody>
 </table>
