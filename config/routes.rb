@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get 'search' => 'public/searches#search'
+  get 'tagsearch/search' => 'public/tagsearch#search'
 
   scope module: :public do
     resources :posts
