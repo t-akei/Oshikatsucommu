@@ -20,6 +20,10 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    # if @user == current_user
+    #   link_to "Edit", edit_post_path(@post)
+    #   link_to "Destroy", post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？"
+    # end
   end
 
   def index
@@ -29,6 +33,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -54,6 +59,12 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :post_image)
     #:genre_id,を追加すること
   end
-
+  
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to user_path(user.id)
+    end
+  end
 
 end

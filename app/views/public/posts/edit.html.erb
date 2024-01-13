@@ -7,22 +7,24 @@
   </ul>
 <% end %>
 
+<% render 'users/info', user: @user %>
+
 <h4>Post edit</h4>
 <%= form_with model: @post do |f| %>
 
   <%= f.file_field :post_image, accept: "image/*" %>
-  
+
   <%#= f.label :genre %>
   <%#= ジャンルをセレクトボックスで選択できるように %>
-  
+
   <%= f.label :title %>
   <%= f.text_field :title %>
-  
+
   <%= f.label :text %>
   <%= f.text_area :body %>
-  
+
   <%= f.submit "Update Post" %>
-  
+
 <% end %>
 
 <%= link_to "Back", post_path(@post) %>
