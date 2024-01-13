@@ -1,4 +1,4 @@
-<% render 'users/info', user: @user %>
+<%= render 'public/users/info', user: @user %>
 
 <h1>Post Detail</h1>
 <table>
@@ -17,17 +17,21 @@
       <td><%= @post.title %></td>
     </tr>
     <tr>
-      <th>Genre</th>
-      <!--<td>Genre参照</td>-->
+      <th>Theme</th>
+      <td><%= @post.category %></td>
     </tr>
     <tr>
       <th>Text</th>
       <td><%= @post.body %></td>
-
-      <% if @user = current_user %>
-        <td><%= link_to "Edit", edit_post_path(@post) %></td>
-        <td><%= link_to "Destroy", post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？" %></td>
-      <% end %>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <% if @user = current_user %>
+          <td><%= link_to "Edit", edit_post_path(@post) %></td>
+          <td><%= link_to "Destroy", post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？" %></td>
+        <% end %>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -4,6 +4,8 @@
     <tr>
       <th>Image</th>
       <th>User name</th>
+      <th>Theme</th>
+      <th>Title</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +13,8 @@
     <tr>
       <td><%= image_tag result.user.get_profile_image %></td>
       <td><%= result.user.name %></td>
+      <td><%= result.category %></td>
+      <td><%= result.title %></td>
       <td><%= link_to "Show", post_path(result.id) %></td>
     </tr>
   </tbody>

@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= form_with url: tagsearches_search_path do |f| %>
+  <%= form_with url: tagsearch_search_path do |f| %>
     <%= f.text_field :content %>
     <%= f.submit "タグ検索" %>
   <% end %>

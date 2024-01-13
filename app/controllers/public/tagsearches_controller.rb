@@ -1,10 +1,11 @@
 class Public::TagsearchesController < ApplicationController
+  before_action :authenticate_user!
 
   def search
-    @model = Post
+    # @model = Post
     @content = params[:content]
     @posts = Post.where('category LIKE ?', '%' + @content + '%')
-    render 'tagsearches/tagform'
+    # render 'tagsearches/tagform'
   end
 
 end

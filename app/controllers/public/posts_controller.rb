@@ -4,7 +4,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def create
@@ -12,7 +12,7 @@ class Public::PostsController < ApplicationController
     post.user_id = current_user.id
     if post.save
       flash[:notice] = "You have created post successfully"
-      redirect_to post_path(@post.id)
+      redirect_to post_path(post.id)
     else
       render :new
     end
@@ -58,7 +58,7 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :post_image, :category)
-    #:genre_id,を追加すること profile_imageは追加するか
+    #:genre_id,を追加すること profile_imageは追加するか？
   end
 
   def is_matching_login_user
