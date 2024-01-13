@@ -28,7 +28,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
     @user = User.find(params[:id])
   end
 
@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :post_image)
     #:genre_id,を追加すること
   end
-  
+
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id

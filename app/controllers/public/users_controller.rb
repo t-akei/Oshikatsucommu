@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.where(user_id: @user.id)
+    #新着順にするか？検討
     # @user = User.find(params[:id])
   end
 
