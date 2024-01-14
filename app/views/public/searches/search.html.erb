@@ -11,11 +11,12 @@
   <tbody>
     <% @results.each do |result| %>
     <tr>
-      <td><%= image_tag result.user.get_profile_image %></td>
+      <td><%= image_tag result.user.get_profile_image(80, 80) %></td>
       <td><%= result.user.name %></td>
       <td><%= result.category %></td>
       <td><%= result.title %></td>
       <td><%= link_to "Show", post_path(result.id) %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
