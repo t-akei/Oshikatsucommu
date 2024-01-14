@@ -29,7 +29,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc)
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def edit
