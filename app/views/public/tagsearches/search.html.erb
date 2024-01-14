@@ -13,9 +13,10 @@
     <tr>
       <td><%= image_tag post.user.get_profile_image(80, 80) %></td>
       <td><%= post.user.name %></td>
-      <%= link_to tagsearch_search_path(content: post.category) do %>
-        <td><%= post.category %></td>
-      <% end %>
+      <!--<%#= link_to tagsearch_search_path(content: post.category) do %>-->
+      <!--  <td><%#= post.category %></td>-->
+      <!--<%# end %>-->
+      <td><%= link_to post.category, tagsearch_search_path(content: post.category) %></td>
       <td><%= post.title %></td>
       <td><%= link_to "Show", post_path(post.id) %></td>
     </tr>
