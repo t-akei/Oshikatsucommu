@@ -35,8 +35,8 @@
     </header>
     <main>
       <div class="d-flex justify-content-center mb-2">
-        <%= render 'public/searches/form' %>
-        <%= render 'public/tagsearches/tagform' %>
+        <%= render 'public/searches/form', method: @method, word: @word %>
+        <%= render 'public/tagsearches/tagform', content: @content %>
       </div>
       <%= yield %>
     </main>
