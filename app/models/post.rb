@@ -8,15 +8,15 @@ class Post < ApplicationRecord
   validates :body, presence: true, length: { maximum: 250 }
   # validates :category, presence: true
 
-  def self.search_for(content, method)
+  def self.search_for(word, method)
     if method == 'perfect'
-      Post.where(title: content, body: content)
+      Post.where('title LIKE ? OR body LIKE ?',word)
     elsif method == 'forward'
-      Post.where('title LIKE ? OR body LIKE ?', content + '%')
+      Post.where('title LIKE ? OR body LIKE ?', word + '%')
     elsif method == 'backward'
-      Post.where('title LIKE ? OR body LIKE ?', '%' + content)
+      Post.where('title LIKE ? OR body LIKE ?', '%' + word)
     else method == 'partial'
-      Post.where('title LIKE ? OR body LIKE ?', '%' + content + '%')
+      Post.where('title LIKE ? OR body LIKE ?', '%' + word + '%')
     end
   end
 
