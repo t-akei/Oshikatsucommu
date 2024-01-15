@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_one_attached :profile_image
+  has_many :bookmarks, dependent: :destroy
 
   validates :name, uniqueness: true, length: { in: 1..20 }
   validates :introduction, length: { maximum: 50 }

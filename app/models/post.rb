@@ -2,6 +2,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_one_attached :post_image
+  has_many :bookmarks, dependent: :destroy
 
   # validates :genre_id, presence: true
   validates :title, presence: true
@@ -19,5 +20,10 @@ class Post < ApplicationRecord
       Post.where('title LIKE ? OR body LIKE ?', '%' + word + '%', '%' + word + '%')
     end
   end
+
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user)
+  end
+#ブクマが既にされているか(bookmarked_by?)のメソッドを定義している
 
 end
