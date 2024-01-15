@@ -8,6 +8,11 @@ class Public::BookmarksController < ApplicationController
     redirect_to request.referer
   end
 
+  def index
+    @bookmarks = Bookmark.where(user_id: current_user.id)
+    @user = current_user
+  end
+
   def destroy
     @post = Post.find(params[:post_id])
     bookmark = @post.bookmarks.find_by(user_id: current_user.id)
