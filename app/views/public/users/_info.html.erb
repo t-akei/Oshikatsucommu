@@ -8,12 +8,14 @@
       <td><%= user.name %></td>
     </tr>
     <tr>
-      <th>introduction</th>
+      <th>Introduction</th>
       <td><%= user.introduction %></td>
     </tr>
-    <!--<tr>-->
-      <!--出来ればカラム追加してテーマも表じさせたい-->
-    <!--</tr>-->
+    <tr>
+      <th>Bookmark</th>
+      <td></td>
+    </tr>
+  
     <% if user == current_user %>
       <tr>
         <td><%= link_to "編集", edit_user_path(user) %></td>
