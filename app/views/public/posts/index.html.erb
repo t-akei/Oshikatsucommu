@@ -4,7 +4,7 @@
 <table>
   <thead>
     <tr>
-      <th></th>
+      <th>User name</th>
       <th>Title</th>
       <th>Theme</th>
     </tr>
@@ -20,6 +20,7 @@
       </td>
       <td><%= post.title %></td>
       <td><%= post.category %></td>
+      <%= render 'public/bookmarks/bookmark', post: post %>
       <td><%= link_to 'Show', post_path(post.id) %></td>
     </tr>
     <% end %>
