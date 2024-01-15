@@ -1,4 +1,4 @@
-<% @post.errors.any? %>
+<% if @post.errors.any? %>
   <%= @post.errors.count %> 件のエラーが発生しました
   <ul>
     <% @post.errors.full_messages.each do |message| %>
@@ -7,21 +7,21 @@
   </ul>
 <% end %>
 
-<%= render 'users/info', user: @user %>
+<%= render 'public/users/info', user: @user %>
 
 <h4>Post edit</h4>
 <%= form_with model: @post do |f| %>
 
-  <%= f.file_field :post_image, accept: "image/*" %>
+  <%= f.file_field :post_image, accept: "image/*" %><br>
 
-  <%#= f.label :genre %>
-  <%#= ジャンルをセレクトボックスで選択できるように %>
+  <%= f.label :theme %>
+  <%= f.text_field :category %><br>
 
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title %><br>
 
   <%= f.label :text %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body %><br>
 
   <%= f.submit "Update Post" %>
 

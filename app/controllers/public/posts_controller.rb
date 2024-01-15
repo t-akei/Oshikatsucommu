@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
     post = Post.find(params[:id])
     user = post.user_id
     unless user == current_user.id
-      redirect_to user_path(user.id)
+      redirect_to user_path(user)
     end
   end
 
