@@ -34,7 +34,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
@@ -62,8 +62,9 @@ class Public::PostsController < ApplicationController
   end
 
   def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
+    post = Post.find(params[:id])
+    user = post.user_id
+    unless user == current_user.id
       redirect_to user_path(user.id)
     end
   end

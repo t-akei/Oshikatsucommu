@@ -23,11 +23,16 @@
     <tr>
       <th>Text</th>
       <td><%= @post.body %></td>
+      <% if @post.bookmarked_by?(current_user) %>
+        <td><%= link_to '★', post_bookmarks_path(@post), method: :delete %></td>
+      <% else %>
+        <td><%= link_to '☆', post_bookmarks_path(@post), method: :post %></td>
+      <% end %>
     </tr>
     <tr>
       <th></th>
       <td>
-        <% if @user = current_user %>
+        <% if @user == current_user %>
           <td><%= link_to "Edit", edit_post_path(@post) %></td>
           <td><%= link_to "Destroy", post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？" %></td>
         <% end %>

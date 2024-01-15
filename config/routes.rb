@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'bookmarks/create'
-    get 'bookmarks/destroy'
-  end
+  # namespace :public do
+  #   get 'bookmarks/create'
+  #   get 'bookmarks/destroy'
+  # end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get 'tagsearch/search' => 'public/tagsearches#search'
 
   scope module: :public do
-    resources :posts
+    resources :posts do
+      resource :bookmarks, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update]
   end
 
