@@ -21,6 +21,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @post_comment = PostComment.new
     # if @user == current_user
     #   link_to "Edit", edit_post_path(@post)
     #   link_to "Destroy", post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？"
