@@ -5,9 +5,9 @@
   <tbody>
     <tr>
       <th>User</th>
-      <td><%= image_tag @user.get_profile_image(80, 80), accept: "image/*" %></td>
       <td>
         <%= link_to user_path(@user) do %>
+          <%= image_tag @user.get_profile_image(80, 80), accept: "image/*" %>
           <%= @user.name %>
         <% end %>
       </td>
