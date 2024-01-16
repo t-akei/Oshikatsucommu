@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = Post.where(user_id: @user.id)
+    @posts = Post.where(user_id: @user.id).order(created_at: :desc)
     #新着順にするか？検討
     # @user = User.find(params[:id])
   end
@@ -36,7 +36,7 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
-  
+
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id

@@ -47,13 +47,13 @@
       <th></th>
       <td>コメント数(<%= @post.post_comments.count %>)</td>
     </tr>
-    <% @post.post_comments.each do |post_comment| %>
+    <% @post_comments.each do |post_comment| %>
     <tr>
       <th></th>
       <td>
         <%= image_tag post_comment.user.get_profile_image(60, 60) %>
         <%= post_comment.user.name %>
-        <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
         <% if post_comment.user == current_user %>
           <%= link_to "Destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
         <% end %>
