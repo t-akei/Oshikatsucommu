@@ -6,6 +6,12 @@ class Public::PostCommentsController < ApplicationController
     comment.user_id = current_user.id
     comment.save
     redirect_to request.referer
+    # 上記３行の別の書き方↓
+    # comment = PostComment.new(post_comment_params)
+    # post = Post.find(params[:post_id])
+    # comment.user_id = current_user.id
+    # comment.post_id = post.id
+
   end
 
   def destroy
@@ -13,6 +19,7 @@ class Public::PostCommentsController < ApplicationController
 
 
   private
+
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end

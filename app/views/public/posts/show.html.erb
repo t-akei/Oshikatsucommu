@@ -34,5 +34,25 @@
         <% end %>
       </td>
     </tr>
+    <tr>
+      <th></th>
+      <td>
+        <%= form_with model: [@post, @post_comment] do |f| %>
+          <%= f.text_area :comment, row: '5', placeholder: "コメントはここに書いて下さい" %>
+          <%= f.submit "Create comment" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>Comment</th>
+      <td>
+        <p>コメント数(<%= @post.post_comments.count %>)</p>
+        <% @post.post_comments.each do |post_comment| %>
+          <%= image_tag post_comment.user.get_profile_image(60, 60) %>
+          <%= post_comment.user.name %>
+          <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <% end %>
+      </td>
+    </tr>
   </tbody>
 </table>
