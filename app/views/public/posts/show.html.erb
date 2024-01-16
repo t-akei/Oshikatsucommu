@@ -35,7 +35,7 @@
       </td>
     </tr>
     <tr>
-      <th></th>
+      <th>Comment</th>
       <td>
         <%= form_with model: [@post, @post_comment] do |f| %>
           <%= f.text_area :comment, row: '5', placeholder: "コメントはここに書いて下さい" %>
@@ -44,15 +44,32 @@
       </td>
     </tr>
     <tr>
-      <th>Comment</th>
+      <th></th>
+      <td>コメント数(<%= @post.post_comments.count %>)</td>
+    </tr>
+    <% @post.post_comments.each do |post_comment| %>
+    <tr>
+      <th></th>
       <td>
-        コメント数(<%= @post.post_comments.count %>)
-        <% @post.post_comments.each do |post_comment| %>
-          <%= image_tag post_comment.user.get_profile_image(60, 60) %>
-          <%= post_comment.user.name %>
-          <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <%= image_tag post_comment.user.get_profile_image(60, 60) %>
+        <%= post_comment.user.name %>
+        <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <% if post_comment.user == current_user %>
+          <%= link_to "Destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
         <% end %>
       </td>
     </tr>
+    <% end %>
   </tbody>
 </table>
+<!--<div>-->
+<!--  <p>コメント数(<%= @post.post_comments.count %>)</p><br>-->
+<!--  <% @post.post_comments.each do |post_comment| %>-->
+<!--    <%= image_tag post_comment.user.get_profile_image(60, 60) %>-->
+<!--    <%= post_comment.user.name %>-->
+<!--    <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>-->
+<!--    <% if post_comment.user == current_user %>-->
+<!--      <%= link_to "Destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete %>-->
+<!--    <% end %>-->
+<!--  <% end %>-->
+<!--</div>-->
