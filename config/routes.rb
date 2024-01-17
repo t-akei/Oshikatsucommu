@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  # namespace :public do
-  #   get 'bookmarks/create'
-  #   get 'bookmarks/destroy'
-  # end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -29,4 +25,9 @@ Rails.application.routes.draw do
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    root to: 'users#index'
+  end
+
 end
