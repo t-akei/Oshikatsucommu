@@ -14,8 +14,13 @@
   <body>
     <header>
       <h2><strong>推し活コミュ！！</strong></h2>
-      <% if user_signed_in? %>
+      <% if admin_signed_in? %>
+        <%= link_to 'ユーザー一覧', admin_users_path %>
+        <%#= link_to '投稿一覧', %>
+        <%#= link_to 'ジャンル一覧', %>
+        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
 
+      <% elsif user_signed_in? %>
         <%= link_to posts_path do %>
            <i class="fa-solid fa-paste"></i> Post一覧
         <% end %>
