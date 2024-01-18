@@ -33,14 +33,19 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  # ユーザーステータスがアクティブであるかを判断するメソッド
   def user_state
     user = User.find_by(email: params[:user][:email])
+    # 入力されたemailが合致するアカウントを1件取得
     return if user.nil?
+    # アカウントを取得できなかった場合このメソッドを終了する
     return unless user.valid_password?(params[:user][:password])
+    # 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、このメソッドを終了する
     unless user.is_active == true
       redirect_to new_user_registration_path
     end
+    # もしユーザーステータスがtrueじゃない＝有効じゃないなら新規登録へ飛ぶ
   end
-  # ユーザーステータスがアクティブであるかを判断するメソッド
+
 
 end

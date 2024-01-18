@@ -15,7 +15,7 @@
     <header>
       <h2><strong>推し活コミュ！！</strong></h2>
       <% if admin_signed_in? %>
-        <%= link_to 'ユーザー一覧', admin_users_path %>
+        <%= link_to 'ユーザー一覧', admin_root_path %>
         <%#= link_to '投稿一覧', %>
         <%#= link_to 'ジャンル一覧', %>
         <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
