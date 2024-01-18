@@ -1,0 +1,21 @@
+<h3>投稿一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザーID</th>
+      <th>ユーザー名</th>
+      <th>投稿タイトル</th>
+    </tr>
+  </thead>
+  <% @posts.each do |post| %>
+  <tbody>
+    <tr>
+      <td><%= post.user.id %></td>
+      <td><%= post.user.name %></td>
+      <td><%= post.title %></td>
+      <td><%= link_to 'show', admin_post_path(post) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
