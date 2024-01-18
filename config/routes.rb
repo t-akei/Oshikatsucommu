@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'post_comments/index'
-  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -33,6 +30,7 @@ Rails.application.routes.draw do
     root to: 'users#index'
     resources :users, only: [:show, :edit, :update]
     resources :posts, only: [:show, :index]
+    resources :post_comments, only: [:index, :destroy]
     resources :genres, only: [:create, :index, :update]
   end
 
