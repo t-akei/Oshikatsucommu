@@ -42,6 +42,7 @@ class Public::SessionsController < Devise::SessionsController
     return unless user.valid_password?(params[:user][:password])
     # 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、このメソッドを終了する
     unless user.is_active == true
+      flash[:alert] = "ユーザーステータスが無効です"
       redirect_to new_user_registration_path
     end
     # もしユーザーステータスがtrueじゃない＝有効じゃないなら新規登録へ飛ぶ
