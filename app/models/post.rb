@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_one_attached :post_image
   has_many :bookmarks, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  belongs_to :genre
 
   # validates :genre_id, presence: true
   validates :title, presence: true
