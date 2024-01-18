@@ -21,4 +21,12 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def user_status
+    if is_active == true
+      "有効"
+    else
+      "無効"
+    end
+  end
+
 end
