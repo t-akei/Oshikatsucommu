@@ -12,7 +12,6 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @user = current_user
     @genres = Genre.all
-    @post.genre_id = Genre.find(params[:genre_id])
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "You have created post successfully"
