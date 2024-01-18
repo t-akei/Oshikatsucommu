@@ -21,6 +21,10 @@
       <td><%= @post.category %></td>
     </tr>
     <tr>
+      <th>Genre</th>
+      <td><%= @post.genre.name %></td>
+    </tr>
+    <tr>
       <th>Text</th>
       <td><%= @post.body %></td>
       <%= render 'public/bookmarks/bookmark', post: @post %>

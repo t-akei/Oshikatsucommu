@@ -5,14 +5,15 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @user = current_user
+    @genres = Genre.all
   end
 
   def create
-    post = Post.new(post_params)
-    post.user_id = current_user.id
-    if post.save
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
       flash[:notice] = "You have created post successfully"
-      redirect_to post_path(post.id)
+      redirect_to post_path(@post)
     else
       render :new
     end
@@ -59,7 +60,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image, :category)
+    params.require(:post).permit(:title, :body, :post_image, :category, :genre_id)
     #:genre_id,を追加すること profile_imageは追加するか？
   end
 

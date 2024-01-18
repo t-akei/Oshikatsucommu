@@ -18,9 +18,8 @@
   <%= f.label :テーマ %>
   <%= f.text_field :category %><br>
 
-  <%#= f.label :genre %>
-  <%#= Genreをセレクトボックスで選べるようにする %>
-
+  <%= select_tag 'genre', options_from_collection_for_select(@genres, :id, :name) %><br>
+  
   <%= f.label :タイトル %>
   <%= f.text_field :title %><br>
 
