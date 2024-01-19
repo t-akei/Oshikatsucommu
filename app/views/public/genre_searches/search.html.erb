@@ -1,6 +1,7 @@
 <%= render 'public/users/info', user: @user, genres: @genres %>
 
-<h4>Post一覧</h4>
+<h3>Post search for "<%= @genre.name %>"</h3>
+
 <table>
   <thead>
     <tr>
@@ -8,27 +9,24 @@
       <th>Title</th>
       <th>Tag</th>
       <th>Genre</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
     <tr>
       <td>
-        <%= link_to user_path(post.user) do %>
-          <%= image_tag post.user.get_profile_image(80, 80), accept: "image/*" %>
-          <%= post.user.name %>
-        <% end %>
+        <%= image_tag post.user.get_profile_image(80, 80) %><br>
+        <%= post.user.name %>
       </td>
       <td><%= post.title %></td>
       <td>
         <%= link_to tagsearch_search_path(content: post.category) do %>
           <%= post.category %>
         <% end %>
-      </td>
+        </td>
       <td><%= post.genre.name %></td>
-      <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-      <%= render 'public/bookmarks/bookmark', post: post %>
-      <td><%= link_to 'Show', post_path(post.id) %></td>
+      <td><%= link_to "Show", post_path(post.id) %></td>
     </tr>
     <% end %>
   </tbody>

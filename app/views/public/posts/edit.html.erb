@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 
-<%= render 'public/users/info', user: @user %>
+<%= render 'public/users/info', user: @user, genres: @genres %>
 
 <h4>Post edit</h4>
 <%= form_with model: @post do |f| %>

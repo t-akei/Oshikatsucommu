@@ -4,6 +4,7 @@ class Public::TagsearchesController < ApplicationController
   def search
     @content = params[:content]
     @posts = Post.where('category LIKE ?', '%' + @content + '%')
+    @user = current_user
   end
 
 end
