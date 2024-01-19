@@ -1,21 +1,32 @@
+<!--キーワード検索結果を表示-->
+<%= render 'public/users/info', user: @user, genres: @genres %>
+
 <h3>Posts search for "<%= @word %>"</h3>
 <table>
   <thead>
     <tr>
-      <th>Image</th>
       <th>User name</th>
-      <th>Theme</th>
       <th>Title</th>
+      <th>Tag</th>
+      <th>Genre</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @results.each do |result| %>
+    <% @posts.each do |post| %>
     <tr>
-      <td><%= image_tag result.user.get_profile_image(80, 80) %></td>
-      <td><%= result.user.name %></td>
-      <td><%= result.category %></td>
-      <td><%= result.title %></td>
-      <td><%= link_to "Show", post_path(result.id) %></td>
+      <td>
+        <%= image_tag post.user.get_profile_image(80, 80) %><br>
+        <%= post.user.name %>
+      </td>
+      <td><%= post.title %></td>
+      <td>
+        <%= link_to tagsearch_search_path(content: post.category) do %>
+          <%= post.category %>
+        <% end %>
+      </td>
+      <td><%= post.genre.name %></td>
+      <td><%= link_to "Show", post_path(post.id) %></td>
     </tr>
     <% end %>
   </tbody>

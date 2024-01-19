@@ -4,7 +4,9 @@ class Public::SearchesController < ApplicationController
   def search
     @word = params[:word]
     @method = params[:method]
-    @results = Post.search_for(@word, @method)
+    @posts = Post.search_for(@word, @method)
+    @user = current_user
+    @genres = Genre.all
   end
 
 end
