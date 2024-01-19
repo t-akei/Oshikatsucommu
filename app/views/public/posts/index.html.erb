@@ -6,8 +6,8 @@
     <tr>
       <th>User name</th>
       <th>Title</th>
-      <th>Theme</th>
-      <th></th>
+      <th>Tag</th>
+      <th>Genre</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +20,12 @@
         <% end %>
       </td>
       <td><%= post.title %></td>
-      <td><%= post.category %></td>
+      <td>
+        <%= link_to tagsearch_search_path(content: post.category) do %>
+          <%= post.category %>
+        <% end %>
+      </td>
+      <td><%= post.genre.name %></td>
       <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
       <%= render 'public/bookmarks/bookmark', post: post %>
       <td><%= link_to 'Show', post_path(post.id) %></td>

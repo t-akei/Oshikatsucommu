@@ -4,7 +4,7 @@
     <tr>
       <th>Image</th>
       <th>User name</th>
-      <th>Theme</th>
+      <th>Tag</th>
       <th>Title</th>
     </tr>
   </thead>
@@ -13,10 +13,12 @@
     <tr>
       <td><%= image_tag post.user.get_profile_image(80, 80) %></td>
       <td><%= post.user.name %></td>
-      <!--<%#= link_to tagsearch_search_path(content: post.category) do %>-->
-      <!--  <td><%#= post.category %></td>-->
-      <!--<%# end %>-->
-      <td><%= link_to post.category, tagsearch_search_path(content: post.category) %></td>
+      <td>
+        <%= link_to tagsearch_search_path(content: post.category) do %>
+          <%= post.category %>
+        <% end %>
+      </td>
+      <!--<td><%#= link_to post.category, tagsearch_search_path(content: post.category) %></td>-->
       <td><%= post.title %></td>
       <td><%= link_to "Show", post_path(post.id) %></td>
     </tr>
