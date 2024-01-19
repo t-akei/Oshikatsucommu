@@ -4,34 +4,38 @@
 <%= render 'info', user: @user, genres: @genres %>
 
 <h4>Posts</h4>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Tag</th>
-      <th>Genre</th>
-      <th>Text</th>
-      <th>Comment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <td>
-        <%= link_to post_path(post) do %>
-          <%= post.title %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to tagsearch_search_path(content: post.category) do %>
-          <%= post.category %>
-        <% end %>
-      </td>
-      <td><%= post.genre.name %></td>
-      <td><%= post.body %></td>
-      <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-      <td><%= post.post_comments.count %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @posts.exists? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Tag</th>
+        <th>Genre</th>
+        <th>Text</th>
+        <th>コメント数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <%= link_to post_path(post) do %>
+            <%= post.title %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to tagsearch_search_path(content: post.category) do %>
+            <%= post.category %>
+          <% end %>
+        </td>
+        <td><%= post.genre.name %></td>
+        <td><%= post.body %></td>
+        <td><%= post.post_comments.count %></td>
+        <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  投稿はまだありません
+<% end %>

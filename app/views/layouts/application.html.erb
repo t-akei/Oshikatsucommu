@@ -22,6 +22,9 @@
         <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
 
       <% elsif user_signed_in? %>
+        <%= link_to user_path(current_user) do %>
+          <i class="fa-solid fa-user"></i> My page
+        <% end %>
         <%= link_to posts_path do %>
            <i class="fa-solid fa-paste"></i> Post一覧
         <% end %>

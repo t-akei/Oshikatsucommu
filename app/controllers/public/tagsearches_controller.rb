@@ -5,6 +5,7 @@ class Public::TagsearchesController < ApplicationController
     @content = params[:content]
     @posts = Post.where('category LIKE ?', '%' + @content + '%')
     @user = current_user
+    @genres = Genre.all
   end
 
 end
