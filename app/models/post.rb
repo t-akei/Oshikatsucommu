@@ -13,13 +13,13 @@ class Post < ApplicationRecord
 
   def self.search_for(word, method)
     if method == 'perfect'
-      Post.where('title LIKE ? OR body LIKE ?', word, word)
+      Post.where('title LIKE ? OR body LIKE ? OR category LIKE ? OR genre_id IN (SELECT id FROM genres WHERE name LIKE ?)', word, word, word, word)
     elsif method == 'forward'
-      Post.where('title LIKE ? OR body LIKE ?', word + '%', word + '%')
+      Post.where('title LIKE ? OR body LIKE ? OR category LIKE ? OR genre_id IN (SELECT id FROM genres WHERE name LIKE ?)', word + '%', word + '%', word + '%', word + '%')
     elsif method == 'backward'
-      Post.where('title LIKE ? OR body LIKE ?', '%' + word, '%' + word)
+      Post.where('title LIKE ? OR body LIKE ? OR category LIKE ? OR genre_id IN (SELECT id FROM genres WHERE name LIKE ?)', '%' + word, '%' + word, '%' + word, '%' + word)
     else method == 'partial'
-      Post.where('title LIKE ? OR body LIKE ?', '%' + word + '%', '%' + word + '%')
+      Post.where('title LIKE ? OR body LIKE ? OR category LIKE ? OR genre_id IN (SELECT id FROM genres WHERE name LIKE ?)', '%' + word + '%', '%' + word + '%', '%' + word + '%', '%' + word + '%')
     end
   end
 
