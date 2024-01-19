@@ -24,6 +24,12 @@
       <th>Genre</th>
       <td><%= @post.genre.name %></td>
     </tr>
+    <% if @post.post_image.attached? %>
+      <tr>
+        <th>Image</th>
+        <td><%= image_tag @post.get_post_image %></td>
+      </tr>
+    <% end %>
     <tr>
       <th>Text</th>
       <td><%= @post.body %></td>

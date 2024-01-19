@@ -23,6 +23,10 @@ class Post < ApplicationRecord
     end
   end
 
+  def get_post_image
+    post_image.variant(resize_to_limit: [350, 200]).processed
+  end
+
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user)
   end

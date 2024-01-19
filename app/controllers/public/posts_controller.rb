@@ -62,8 +62,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image, :category, :genre_id)
-    #:genre_id,を追加すること profile_imageは追加するか？
+    params.require(:post).permit(:profile_image, :title, :body, :post_image, :category, :genre_id)
   end
 
   def is_matching_login_user
