@@ -33,7 +33,10 @@
     <tr>
       <th>Text</th>
       <td><%= @post.body %></td>
-      <%= render 'public/bookmarks/bookmark', post: @post %>
+      <td id="bookmark_btn_<%= @post.id %>">
+        <%= render 'public/bookmarks/bookmark', post: @post %>
+      </td>
+      <!--ブクマボタンをこの投稿と関連づける-->
     </tr>
     <tr>
       <th></th>

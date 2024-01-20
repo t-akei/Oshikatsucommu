@@ -27,7 +27,12 @@
       </td>
       <td><%= post.genre.name %></td>
       <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-      <%= render 'public/bookmarks/bookmark', post: post %>
+      <td id="bookmark_btn_<%= post.id %>">
+        <%= render 'public/bookmarks/bookmark', post: post %>
+      </td>
+      <!--ある投稿のブクマボタンとして、投稿と関連付けている-->
+      <!--これで、各ブクマボタンはある投稿のボタン＝一意となっている。-->
+
       <td><%= link_to 'Show', post_path(post.id) %></td>
     </tr>
     <% end %>
