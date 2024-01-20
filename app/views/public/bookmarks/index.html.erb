@@ -6,7 +6,8 @@
     <tr>
       <th>User name</th>
       <th>Title</th>
-      <th>Theme</th>
+      <th>Tag</th>
+      <th>Genre</th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +15,7 @@
     <tr>
       <td>
         <%= link_to user_path(bookmark.user) do %>
-            <%= image_tag bookmark.user.get_profile_image(80, 80) %>
+            <%= image_tag bookmark.user.get_profile_image(80, 80) %><br>
             <%= bookmark.user.name %>
         <% end %>
       </td>
@@ -24,6 +25,7 @@
         <% end %>
       </td>
       <td><%= bookmark.post.category %></td>
+      <td><%= bookmark.post.genre.name %></td>
     </tr>
     <% end %>
   </tbody>
