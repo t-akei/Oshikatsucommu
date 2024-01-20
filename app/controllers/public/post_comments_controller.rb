@@ -1,11 +1,14 @@
 class Public::PostCommentsController < ApplicationController
 
   def create
-    post = Post.find(params[:post_id])
-    comment = post.post_comments.new(post_comment_params)
+    @post = Post.find(params[:post_id])
+    @post_comments = @post.post_comments.order(created_at: :desc)
+    comment = @post.post_comments.new(post_comment_params)
     comment.user_id = current_user.id
     comment.save
-    redirect_to request.referer
+    # redirect_to request.referer
+    # create.jsファイルを探してもらう
+
     # 上記３行の別の書き方↓
     # comment = PostComment.new(post_comment_params)
     # post = Post.find(params[:post_id])
@@ -15,9 +18,11 @@ class Public::PostCommentsController < ApplicationController
   end
 
   def destroy
-    post = PostComment.find(params[:id])
-    post.destroy
-    redirect_to request.referer
+    @post = Post.find(params[:post_id])
+    @post_comments = @post.post_comments.order(created_at: :desc)
+    post_comment = PostComment.find(params[:id])
+    post_comment.destroy
+    # redirect_to request.referer
   end
 
 
