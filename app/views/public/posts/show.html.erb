@@ -49,29 +49,16 @@
     </tr>
     <tr>
       <th>Comment</th>
-      <td>
-        <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, row: '5', placeholder: "コメントはここに書いて下さい" %>
-          <%= f.submit "Create comment" %>
-        <% end %>
-      </td>
+      <td><%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %></td>
     </tr>
     <tr>
       <th></th>
-      <td>コメント数(<%= @post.post_comments.count %>)</td>
-    </tr>
-    <% @post_comments.each do |post_comment| %>
-    <tr>
-      <th></th>
-      <td>
-        <%= image_tag post_comment.user.get_profile_image(60, 60) %>
-        <%= post_comment.user.name %>
-        <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-        <% if post_comment.user == current_user %>
-          <%= link_to "Destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-        <% end %>
+      <td id="comment_count">
+        <%= render 'public/post_comments/count', post: @post %>
       </td>
     </tr>
-    <% end %>
   </tbody>
 </table>
+<div id="comment_index">
+  <%= render 'public/post_comments/index', post_comments: @post_comments %>
+</div>
