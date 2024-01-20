@@ -12,16 +12,14 @@
       <td><%= user.introduction %></td>
     </tr>
 
-    <% if user == current_user %>
+
+
+    <% if user == current_user && user.email != "guest@example.com" %>
       <tr>
         <td><%= link_to "編集", edit_user_path(user) %></td>
       </tr>
       <tr>
-        <th>
-          <%= link_to user_bookmarks_path(user) do %>
-            Bookmark
-          <% end %>
-        </th>
+        <td><%= link_to "Bookmark", user_bookmarks_path(user) %></td>
       </tr>
       <tr>
         <td><%= link_to "投稿する", new_post_path %></td>

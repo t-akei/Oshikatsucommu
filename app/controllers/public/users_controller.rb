@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only:[:edit, :update]
+  before_action :ensure_guest_user, only: [:edit]
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   def show
@@ -39,7 +40,13 @@ class Public::UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to user_path(user.id)
+      redirect_to user_path(user)
+    end
+  end
+
+  def ensure_guest_user
+    if @user.email == "guest@example.com"
+      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 
