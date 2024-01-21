@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'search' => 'public/searches#search'
   get 'tagsearch/search' => 'public/tagsearches#search'
   get 'genre/search' => 'public/genre_searches#search'
-  get '/favicon.ico', to: redirect('/assets/favicon.ico')
+
 
   scope module: :public do
     resources :posts do
