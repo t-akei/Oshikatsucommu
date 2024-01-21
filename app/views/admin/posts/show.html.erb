@@ -22,9 +22,21 @@
       <th>ジャンル</th>
       <td><%= @post.genre.name %></td>
     </tr>
+    <% if @post.post_image.attached? %>
+    <tr>
+      <th>画像</th>
+      <td><%= image_tag @post.get_post_image %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <th>本文</th>
+      <td><%= @post.body %></td>
+    </tr>
     <tr>
       <th></th>
-      <td><%= @post.body %></td>
+      <td>
+        <%= link_to '削除', admin_post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？", class:"btn btn-sm btn-danger" %>
+      </td>
     </tr>
   </tbody>
 </table>
