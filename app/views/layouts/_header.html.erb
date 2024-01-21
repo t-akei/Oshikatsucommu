@@ -1,0 +1,36 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0e357f;">
+    <div class="container">
+      
+    </div>
+</header>
+
+
+<h2><strong>推し活コミュ！！</strong></h2>
+<% if admin_signed_in? %>
+  <%= link_to 'ユーザー一覧', admin_root_path %>
+  <%= link_to '投稿一覧', admin_posts_path %>
+  <%= link_to '投稿コメント一覧', admin_post_comments_path %>
+  <%= link_to 'ジャンル一覧', admin_genres_path %>
+  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+
+<% elsif user_signed_in? %>
+  <%= link_to user_path(current_user) do %>
+    <i class="fa-solid fa-user"></i> My page
+  <% end %>
+  <%= link_to posts_path do %>
+    <i class="fa-solid fa-paste"></i> Post一覧
+  <% end %>
+  <%= link_to destroy_user_session_path, method: :delete do %>
+    <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+  <% end %>
+
+<% else %>
+  <%= link_to new_user_registration_path do %>
+    <i class="fa-solid fa-user-plus"></i> 新規登録
+  <% end %>
+  <%= link_to new_user_session_path do %>
+    <i class="fa-solid fa-right-to-bracket"></i> ログイン
+  <% end %>
+
+  <% end %>
