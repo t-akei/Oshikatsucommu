@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0e357f;">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-3 py-3" style="background-color: #0e357f;">
     <div class="container">
       <a class="navbar-brand" href="/">
         <span>推し活コミュ！！</span>
@@ -37,39 +37,34 @@
           </li>
         <% elsif user_signed_in? %>
           <li>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to user_path(current_user), class:"nav-link text-light" do %>
               <i class="fa-solid fa-user"></i> My page
             <% end %>
           </li>
+          <li>
+            <%= link_to posts_path, class:"nav-link text-light" do %>
+              <i class="fa-solid fa-paste"></i> Post一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+              <i class="fa-solid fa-user-plus"></i> 新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+              <i class="fa-solid fa-right-to-bracket"></i> ログイン
+            <% end %>
+          </li>
+        <% end %>
         </ul>
       </div>
     </div>
+  </nav>
 </header>
-
-
-
-
-  
-  
-  
-  
-  
-
-
-  
-  <%= link_to posts_path do %>
-    <i class="fa-solid fa-paste"></i> Post一覧
-  <% end %>
-  <%= link_to destroy_user_session_path, method: :delete do %>
-    <i class="fa-solid fa-right-from-bracket"></i> ログアウト
-  <% end %>
-
-<% else %>
-  <%= link_to new_user_registration_path do %>
-    <i class="fa-solid fa-user-plus"></i> 新規登録
-  <% end %>
-  <%= link_to new_user_session_path do %>
-    <i class="fa-solid fa-right-to-bracket"></i> ログイン
-  <% end %>
-
-  <% end %>

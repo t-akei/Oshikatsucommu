@@ -1,2 +1,30 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<h3>投稿詳細</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <th>ユーザーID</th>
+      <td><%= @post.user.id %></td>
+    </tr>
+    <tr>
+      <th>ユーザー名</th>
+      <td><%= @post.user.name %></td>
+    </tr>
+    <tr>
+      <th>タイトル</th>
+      <td><%= @post.title %></td>
+    </tr>
+    <tr>
+      <th>タグ</th>
+      <td><%= @post.category %></td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <td><%= @post.genre.name %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= @post.body %></td>
+    </tr>
+  </tbody>
+</table>
