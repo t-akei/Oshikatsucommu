@@ -1,41 +1,51 @@
 <div>
   <%= flash[:notice] %>
 </div>
-<%= render 'info', user: @user, genres: @genres %>
 
-<h4>Posts</h4>
-<% if @posts.exists? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Tag</th>
-        <th>Genre</th>
-        <th>Text</th>
-        <th>コメント数</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <%= link_to post_path(post) do %>
-            <%= post.title %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'info', user: @user, genres: @genres %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <h4>Posts</h4>
+      <% if @posts.exists? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-md-2">Title</th>
+            <th class="col-md-2">Tag</th>
+            <th class="col-md-2">Genre</th>
+            <th class="col-md-4">Text</th>
+            <th class="col-md-2">Comment<br>count</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <%= link_to post_path(post) do %>
+                <%= post.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to tagsearch_search_path(content: post.category) do %>
+                <%= post.category %>
+              <% end %>
+            </td>
+            <td><%= post.genre.name %></td>
+            <td><%= post.body[0..10]... %></td>
+            <td><%= post.post_comments.count %></td>
+            <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+          </tr>
           <% end %>
-        </td>
-        <td>
-          <%= link_to tagsearch_search_path(content: post.category) do %>
-            <%= post.category %>
-          <% end %>
-        </td>
-        <td><%= post.genre.name %></td>
-        <td><%= post.body %></td>
-        <td><%= post.post_comments.count %></td>
-        <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-      </tr>
+        </tbody>
+      </table>
+      <% else %>
+        <p>投稿はまだありません</p>
       <% end %>
-    </tbody>
-  </table>
-<% else %>
-  投稿はまだありません
-<% end %>
+    </div>
+  </div>
+</div>
