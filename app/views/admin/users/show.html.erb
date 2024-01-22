@@ -2,8 +2,8 @@
 <div class="container mt-5">
   <h4 class="text-center"><%= @user.name %> さんの詳細</h4>
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <table class="table mt-3" rules="rows">
+      <div class="col-md-7">
+        <table class="table mt-3" rules="rows" border="3">
           <tbody>
             <tr>
               <th class="col-md-3" bgcolor="#DDDDDD">ユーザーID</th>
@@ -21,7 +21,7 @@
               <td><%= @user.email %></td>
             </tr>
             <tr>
-              <th class="col-md-3" bgcolor="#DDDDDD">ユーザーステータス</th>
+              <th class="col-md-3" bgcolor="#DDDDDD">ユーザー<br>ステータス</th>
               <td class="col-md-3"></td>
               <td><%= @user.user_status %></td>
             </tr>
