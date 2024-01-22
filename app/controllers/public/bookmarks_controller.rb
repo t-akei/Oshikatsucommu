@@ -1,5 +1,6 @@
 class Public::BookmarksController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_matching_login_user, only:[:index]
 
   def create
     @post = Post.find(params[:post_id])
@@ -26,6 +27,16 @@ class Public::BookmarksController < ApplicationController
     if @bookmark.present?
       @bookmark.destroy
       # redirect_to request.referer
+    end
+  end
+
+
+  private
+
+  def is_matching_login_user
+    user = User.find(params[:user_id])
+    unless user.id == current_user.id
+      redirect_to user_path(current_user)
     end
   end
 
