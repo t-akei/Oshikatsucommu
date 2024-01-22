@@ -13,17 +13,17 @@
     <p class="mb-3">気軽に参加して下さい!</p>
   </div>
 
-  <div class="btn-wrapper col-10 mx-auto">
-    <duv class="row">
-      <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class:"btn btn-secondary btn-sm btn-block mb-3", method: :post %>
+  <div class="btn-wrapper col-10 mx-auto mt-3">
+    <duv class="row justify-content-center">
+      <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class:"btn btn-secondary btn-sm mb-3 col-md-4", method: :post %>
     </duv>
 
-    <div class="row">
-      <%= link_to "ログイン", new_user_session_path, class:"btn btn-warning btn-sm btn-block mb-3" %>
+    <div class="row justify-content-center mt-3">
+      <%= link_to "ログイン", new_user_session_path, class:"btn btn-warning btn-sm mb-3 col-md-4" %>
     </div>
 
-    <div class="row">
-      <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success btn-sm btn-block" %>
+    <div class="row justify-content-center mt-3">
+      <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success btn-sm col-md-4" %>
     </div>
   </div>
 </div>
