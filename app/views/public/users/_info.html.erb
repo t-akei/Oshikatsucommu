@@ -1,44 +1,57 @@
-<!--部分テンプレートファイル-->
-<div class="col-md-3">
+<!--User infoの部分テンプレートファイル-->
+
   <h3>User info</h3>
-  <%= image_tag user.get_profile_image(100, 100) %>
   <table class="table">
-    <tbody>
-      <tr>
-        <th>User name</th>
-        <td><%= user.name %></td>
-      </tr>
-      <tr>
-        <th>Introduction</th>
-        <td><%= user.introduction %></td>
-      </tr>
+    <tr><%= image_tag user.get_profile_image(100, 100) %></tr>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>User name</th>
+          <td><%= user.name %></td>
+        </tr>
+        <tr>
+          <th>Introduction</th>
+          <td><%= user.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
 
-
-      <!--他のユーザーやゲストユーザーには-->
-      <% if user == current_user && user.email != "guest@example.com" %>
-        <tr>
-          <td><%= link_to "編集", edit_user_path(user) %></td>
-        </tr>
-        <tr>
-          <td><%= link_to "Bookmark", user_bookmarks_path(user) %></td>
-        </tr>
-      <% end %>
-        <tr>
-          <td><%= link_to "投稿する", new_post_path %></td>
-        </tr>
-      <%# end %>
-      <tr>
-        <th>ジャンル検索</th>
-      </tr>
-      <% @genres.each do |genre| %>
-      <tr>
-        <td>
-          <%= link_to genre_search_path(genre_id: genre.id) do %>
-            <%= genre.name %>
+    <div class="row">
+      <!--<div class="col-auto">-->
+        <table class="table">
+          <% if user == current_user && user.email != "guest@example.com" %>
+          <tr>
+            <td>
+              <%= link_to edit_user_path(user), class:"btn btn-outline-dark btn-sm btn-block" do  %>
+                <i class="fa-solid fa-user-pen"></i>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center"><%= link_to "Bookmark", user_bookmarks_path(user), style:"color:black;" %></td>
+          </tr>
           <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-</table>
-</div>
+          <tr>
+            <td><%= link_to "投稿する", new_post_path, class:"btn btn-success btn-sm btn-block" %></td>
+          </tr>
+        </table>
+      </div>
+
+      <table class="table">
+        <tbody class="text-center">
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+          <% @genres.each do |genre| %>
+          <tr>
+            <td>
+              <%= link_to genre_search_path(genre_id: genre.id), style:"color: black;" do %>
+                <%= genre.name %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </table>
