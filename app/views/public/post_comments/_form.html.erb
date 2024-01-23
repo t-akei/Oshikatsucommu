@@ -1,6 +1,6 @@
 <!--コメントの投稿フォーム-->
 
 <%= form_with model: [post, post_comment], local: false do |f| %>
-  <%= f.text_area :comment, row:'5', placeholder: "コメントはここに書いて下さい", class:"w-100", id:"comment_textarea" %>
+  <%= f.text_area :comment, placeholder: "コメントはここに書いて下さい", style:"height: 80px; width: 400px;", id:"comment_textarea" %>
   <%= f.submit "Create comment" %>
 <% end %>

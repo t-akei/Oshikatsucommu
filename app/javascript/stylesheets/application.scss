@@ -1,1 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
+
+.comment {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
