@@ -1,67 +1,90 @@
-<%= render 'public/users/info', user: @user, genres: @genres %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/users/info', user: @user, genres: @genres %>
+    </div>
 
-<h1>Post Detail</h1>
-<table>
-  <tbody>
-    <tr>
-      <th>User</th>
-      <td>
-        <%= link_to user_path(@user) do %>
-          <%= image_tag @user.get_profile_image(80, 80), accept: "image/*" %>
-          <%= @user.name %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th>Title</th>
-      <td><%= @post.title %></td>
-    </tr>
-    <tr>
-      <th>Tag</th>
-      <td><%= @post.category %></td>
-    </tr>
-    <tr>
-      <th>Genre</th>
-      <td><%= @post.genre.name %></td>
-    </tr>
-    <% if @post.post_image.attached? %>
-      <tr>
-        <th>Image</th>
-        <td><%= image_tag @post.get_post_image %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <th>Text</th>
-      <td><%= @post.body %></td>
-      <td id="bookmark_btn_<%= @post.id %>">
-        <%= render 'public/bookmarks/bookmark', post: @post %>
-      </td>
-      <!--ブクマボタンをこの投稿と関連づける-->
-    </tr>
-    <tr>
-      <th></th>
-      <td>
-        <% if @user == current_user %>
-          <td><%= link_to "Edit", edit_post_path(@post) %></td>
-          <td><%= link_to "Destroy", post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？" %></td>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th>Comment</th>
-      <td><%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %></td>
-    </tr>
-    <tr>
-      <th></th>
-      <td id="comment_count">
-        <%= render 'public/post_comments/count', post: @post %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<div id="comment_index">
-  <%= render 'public/post_comments/index', post_comments: @post_comments %>
+    <div class="col-md-8 offset-md-1">
+
+      <div class="form-group">
+        <%= render 'public/searches/form', method: @method, word: @word %>
+      </div>
+      <div class="form-group">
+        <%= render 'public/tagsearches/tagform', content: @content %>
+      </div>
+
+      <h3>Post Detail</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User name</th>
+            <th>Title</th>
+            <th>Tag</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@user) do %>
+                <%= image_tag @user.get_profile_image(80, 80), accept: "image/*" %>
+                <%= @user.name %>
+              <% end %>
+            </td>
+            <td><%= @post.title %></td>
+            <td><%= @post.category %></td>
+            <td><%= @post.genre.name %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <tbody>
+          <% if @post.post_image.attached? %>
+          <tr>
+            <th>Image</th>
+            <td><%= image_tag @post.get_post_image %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <th>Text</th>
+            <td><%= @post.body %></td>
+            <td id="bookmark_btn_<%= @post.id %>">
+              <%= render 'public/bookmarks/bookmark', post: @post %>
+            </td>
+            <!--idでブクマボタンを各投稿と関連づける-->
+          </tr>
+          <tr>
+            <!--<th></th>-->
+            <td>
+              <% if @user == current_user %>
+                <td><%= link_to "Edit", edit_post_path(@post), class:"btn btn-warning btn-sm" %></td>
+                <td><%= link_to "Destroy", post_path(@post),  class:"btn btn-danger btn-sm", method: :delete, "data-confirm" => "投稿を削除しますか？" %></td>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <tbody>
+          <tr>
+            <th>Comment</th>
+            <td><%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td id="comment_count">
+              <%= render 'public/post_comments/count', post: @post %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="comment_index">
+        <%= render 'public/post_comments/index', post_comments: @post_comments %>
+      </div>
+      <!--非同期にしたいコメント数、コメント一覧、フォームを部分テンプレート-->
+      <!--それぞれにIDつけてJSの操作の目標にする-->
+    </div>
+  </div>
 </div>
-
-<!--非同期にしたいコメント数、コメント一覧、フォームを部分テンプレート-->
-<!--それぞれにIDつけてJSの操作の目標にする-->
