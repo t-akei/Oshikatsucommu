@@ -48,7 +48,7 @@
           <% end %>
           <tr>
             <th>Text</th>
-            <td class="post"><%= simple_format(@post.body) %></td>
+            <td class="post"><%= @post.body %></td>
             <td id="bookmark_btn_<%= @post.id %>">
               <%= render 'public/bookmarks/bookmark', post: @post %>
             </td>
