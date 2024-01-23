@@ -5,6 +5,14 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
+      
+      <div class="form-group">
+        <%= render 'public/searches/form', method: @method, word: @word %>
+      </div>
+      <div class="form-group">
+        <%= render 'public/tagsearches/tagform', content: @content %>
+      </div>
+      
       <h4>Posts</h4>
       <% if @posts.exists? %>
       <table class="table">
