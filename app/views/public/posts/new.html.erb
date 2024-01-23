@@ -1,32 +1,55 @@
-<% if @post.errors.any? %>
-  <%=  @post.errors.count %> 件のエラーが発生しました
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/users/info', user: @user, genres: @genres %>
+    </div>
 
-<%= render 'public/users/info', user: @user, genres: @genres %>
+    <div class="col-md-8 offset-md-1">
+      <h3 class="mb-3">New Post</h3>
+        <% if @post.errors.any? %>
+          <%=  @post.errors.count %> 件のエラーが発生しました
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
 
-<h4>新規投稿</h4>
+        <%= form_with model: @post do |f| %>
 
-<%= form_with model: @post do |f| %>
-  <%= f.label :image %>
-  <%= f.file_field :post_image, accept: "image/*" %><br>
+          <div class="form-group">
+            <%= f.label :image %><br>
+            <%= f.file_field :post_image, accept: "image/*" %><br>
+          </div>
 
-  <%= f.label :tag %>
-  <%= f.text_field :category, placeholder: "(例)ステーバックス" %><br>
+          <div class="form-group mb-0">
+            <%= f.label :tag %><br>
+            <%= f.text_field :category, placeholder: "(例)ステーバックス", class:"form-control col-md-3" %><br>
+          </div>
 
-  <%= f.label :genre %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択して下さい"}, {class: 'form-control'}  %><br>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %><br>
+          <div class="form-group">
+            <%= f.label :genre %><br>
+            <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択して下さい"}, {class: 'form-control col-md-4'} %><br>
+          </div>
 
-  <%= f.label :text %><br>
-  <%= f.text_area :body, row:'5', placeholder: "本文はここに書いて下さい", class:"w-100" %><br>
+          <div class="form-group mb-0">
+            <%= f.label :title %><br>
+            <%= f.text_field :title, class:"form-control col-md-4" %><br>
+          </div>
 
-  <%= f.submit "投稿" %>
+          <div class="form-group">
+            <%= f.label :text %><br>
+            <%= f.text_area :body, placeholder: "本文はここに書いて下さい", class:"form-control", style:"width: 500px; height: 200px;" %>
+          </div>
+          <%= f.submit "Create Post" %>
+        <% end %>
+    </div>
+  </div>
+</div>
 
-<% end %>
+
+
+
+
+

@@ -27,11 +27,11 @@
           <tr>
             <td>
               <%= link_to user_path(@user) do %>
-                <%= image_tag @user.get_profile_image(80, 80), accept: "image/*" %>
+                <%= image_tag @user.get_profile_image(80, 80), accept: "image/*" %><br>
                 <%= @user.name %>
               <% end %>
             </td>
-            <td><%= @post.title %></td>
+            <td class="post"><%= simple_format(@post.title) %></td>
             <td><%= @post.category %></td>
             <td><%= @post.genre.name %></td>
           </tr>
@@ -48,7 +48,7 @@
           <% end %>
           <tr>
             <th>Text</th>
-            <td><%= simple_format(@post.body) %></td>
+            <td class="post"><%= simple_format(@post.body) %></td>
             <td id="bookmark_btn_<%= @post.id %>">
               <%= render 'public/bookmarks/bookmark', post: @post %>
             </td>
