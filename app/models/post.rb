@@ -6,10 +6,10 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   belongs_to :genre
 
-  # validates :genre_id, presence: true
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 250 }
   validates :category, presence: true
+  validates :genre_id, presence: true
 
   def self.search_for(word, method)
     if method == 'perfect'

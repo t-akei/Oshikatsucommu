@@ -12,24 +12,20 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_params)
+    @user = User.find(params[:id])
+    @genres = Genre.all
+    if @user.update(user_params)
       flash[:notice] = "You have updated user successfully"
-      redirect_to user_path(user)
+      redirect_to user_path(@user)
     else
       render :edit
     end
   end
 
-
-  protected
-
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
-  # end
 
   private
 
@@ -40,11 +36,12 @@ class Public::UsersController < ApplicationController
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to user_path(user)
+      redirect_to user_path(current_user)
     end
   end
 
   def ensure_guest_user
+    @user = User.find(params[:id])
     if @user.email == "guest@example.com"
       redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
