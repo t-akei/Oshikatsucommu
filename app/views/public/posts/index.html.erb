@@ -9,6 +9,14 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
+
+      <div class="form-group">
+        <%= render 'public/searches/form', method: @method, word: @word %>
+      </div>
+      <div class="form-group">
+        <%= render 'public/tagsearches/tagform', content: @content %>
+      </div>
+
       <h3>Post一覧</h3>
       <table class="table">
         <thead>
