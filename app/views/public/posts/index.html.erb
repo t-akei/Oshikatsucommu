@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <h4>Post一覧</h4>
+      <h3>Post一覧</h3>
       <table class="table">
         <thead>
           <tr>
@@ -17,7 +17,7 @@
             <th>Title</th>
             <th>Tag</th>
             <th>Genre</th>
-            <th colspan="3"></th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +29,11 @@
                 <%= post.user.name %>
               <% end %>
             </td>
-            <td><%= post.title %></td>
+            <td>
+              <%= link_to post_path(post) do %>
+                <%= post.title %>
+              <% end %>
+            </td>
             <td>
               <%= link_to tagsearch_search_path(content: post.category) do %>
                 <%= post.category %>
@@ -42,8 +46,6 @@
             </td>
             <!--ある投稿のブクマボタンとして、投稿と関連付けている-->
             <!--これで、各ブクマボタンはある投稿のボタン＝一意となっている。-->
-
-            <td><%= link_to 'Show', post_path(post.id) %></td>
           </tr>
           <% end %>
         </tbody>

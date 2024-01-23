@@ -1,32 +1,49 @@
-<%= render 'public/users/info', user: @user, genres: @genres %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/users/info', user: @user, genres: @genres %>
+    </div>
 
-<h3>BookMark一覧</h3>
-<table>
-  <thead>
-    <tr>
-      <th>User name</th>
-      <th>Title</th>
-      <th>Tag</th>
-      <th>Genre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
-    <tr>
-      <td>
-        <%= link_to user_path(bookmark.user) do %>
-            <%= image_tag bookmark.user.get_profile_image(80, 80) %><br>
-            <%= bookmark.user.name %>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to post_path(bookmark.post) do %>
-          <%= bookmark.post.title %>
-        <% end %>
-      </td>
-      <td><%= bookmark.post.category %></td>
-      <td><%= bookmark.post.genre.name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-md-8 offset-md-1">
+      <h3>BookMark一覧</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User name</th>
+            <th>Title</th>
+            <th>Tag</th>
+            <th>Genre</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookmarks.each do |bookmark| %>
+          <tr>
+            <td>
+              <%= link_to user_path(bookmark.user) do %>
+                  <%= image_tag bookmark.user.get_profile_image(80, 80) %><br>
+                  <%= bookmark.post.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to post_path(bookmark.post) do %>
+                <%= bookmark.post.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to tagsearch_search_path(content: bookmark.post.category) do %>
+                <%= bookmark.post.category %>
+              <% end %>
+            </td>
+            <td><%= bookmark.post.genre.name %></td>
+            <td><%= bookmark.post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+            <td id="bookmark_btn_<%= bookmark.post.id %>">
+              <%= render 'public/bookmarks/bookmark', post: bookmark.post %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

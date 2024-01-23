@@ -16,7 +16,7 @@ class Public::BookmarksController < ApplicationController
   end
 
   def index
-    @bookmarks = Bookmark.where(user_id: current_user.id)
+    @bookmarks = Bookmark.where(user_id: current_user.id).order(created_at: :desc)
     @user = current_user
     @genres = Genre.all
   end
