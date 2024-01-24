@@ -15,6 +15,10 @@
     <%= render 'layouts/header' %>
     <main>
       <%= flash[:notice] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
