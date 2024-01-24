@@ -6,12 +6,13 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-
-      <div class="form-group">
-        <%= render 'public/searches/form', method: @method, word: @word %>
-      </div>
-      <div class="form-group">
-        <%= render 'public/tagsearches/tagform', content: @content %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= render 'public/searches/form', method: @method, word: @word %>
+        </div>
+        <div class="col-md-5 offset-md-1">
+          <%= render 'public/tagsearches/tagform', content: @content %>
+        </div>
       </div>
 
       <h3 class="mt-4">Post search for Tag "<%= @content %>"</h3>
@@ -50,6 +51,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="paginate">
+        <%= paginate @posts %>
+      </div>
     </div>
   </div>
 </div>
