@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <%= form_with url: tagsearch_search_path, method: :get do |f| %>
-    <%= f.text_field :content, value:content %>
+    <%= f.text_field :content, value:content, size:18 %>
     <%= f.submit "タグ検索" %>
   <% end %>
 <% end %>
