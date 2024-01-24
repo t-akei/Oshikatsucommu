@@ -12,7 +12,7 @@
               <td><%= @user.id %></td>
             </tr>
             <tr>
-              <th class="col-md-4" bgcolor="#DDDDDD">ユーザー名</th>
+              <th bgcolor="#DDDDDD">ユーザー名</th>
               <td class="col-md-2"></td>
               <td><%= @user.name %></td>
             </tr>
@@ -22,17 +22,23 @@
               <td><%= @user.email %></td>
             </tr>
             <tr>
-              <th class="col-md-4" bgcolor="#DDDDDD">ステータス</th>
+              <th class="col-md-4" bgcolor="#DDDDDD">ステータスの変更</th>
               <td class="col-md-2"></td>
               <td>
                 <%= f.radio_button :is_active, :true %>
                 <%= f.label :is_active, "有効" %>
                 <%= f.radio_button :is_active, :false %>
                 <%= f.label :is_active, "無効" %><br>
-                <%= f.submit "変更する", "data-confirm" => "ステータスを変更しますか？" %>
-          <% end %>
-          <%= form_with model: @user, url: admin_user_path(@user), method: :delete do |f| %>
-                <%= f.submit "削除する", "data-confirm" => "ユーザーを削除しますか？" %>
+                <%= f.submit "変更する", class:"btn btn-warning btn-sm", "data-confirm" => "ステータスを変更しますか？" %>
+              </td>
+            </tr>
+        <% end %>
+        <%= form_with model: @user, url: admin_user_path(@user), method: :delete do |f| %>
+            <tr>
+              <th class="col-md-4" bgcolor="#DDDDDD">ユーザーの削除</th>
+              <td class="col-md-2"></td>
+              <td>
+                <%= f.submit "削除する", class:"btn btn-danger", "data-confirm" => "ユーザーを削除しますか？" %>
               </td>
             </tr>
           </tbody>
