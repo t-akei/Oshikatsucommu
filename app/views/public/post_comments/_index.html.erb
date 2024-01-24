@@ -1,13 +1,21 @@
 <!--コメント一覧の部分テンプレート-->
 
 <table>
+  <thead>
+    <tr>
+      <th class="co-md-1"></th>
+      <th class="co-md-3"></th>
+      <th class="co-md-3"></th>
+      <th class="co-md-1"></th>
+    </tr>
+  </thead>
   <tbody>
     <% post_comments.each do |post_comment| %>
     <tr>
       <!--<th></th>-->
       <td>
         <%= link_to user_path(post_comment.user) do %>
-          <%= image_tag post_comment.user.get_profile_image(60, 60) %><br>
+          <%= image_tag post_comment.user.get_profile_image(50, 40) %><br>
           <%= post_comment.user.name %>
         <% end %>
       </td>

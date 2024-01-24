@@ -3,6 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+        <%#= form_with model: @user, url: admin_user_path(@user), method: :delete do |f| %>
         <table class="table mt-3" rules="rows" border="3">
           <tbody>
             <tr>
@@ -28,7 +29,10 @@
                 <%= f.label :is_active, "有効" %>
                 <%= f.radio_button :is_active, :false %>
                 <%= f.label :is_active, "無効" %><br>
-                <%= f.submit "変更する" %>
+                <%= f.submit "変更する", "data-confirm" => "ステータスを変更しますか？" %>
+          <% end %>
+          <%= form_with model: @user, url: admin_user_path(@user), method: :delete do |f| %>
+                <%= f.submit "削除する", "data-confirm" => "ユーザーを削除しますか？" %>
               </td>
             </tr>
           </tbody>
