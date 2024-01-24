@@ -14,16 +14,7 @@
   <body>
     <%= render 'layouts/header' %>
     <main>
-      <!--<div class="d-flex justify-content-center mb-2">-->
-      <!--  <div class="col-6 mr-2">-->
-      <!--    <%= render 'public/searches/form', method: @method, word: @word %>-->
-      <!--  </div>-->
-      <!--  <div class="col-6 ml-2">-->
-      <!--    <%= render 'public/tagsearches/tagform', content: @content %>-->
-      <!--  </div>-->
-        <%#= render 'public/searches/form', method: @method, word: @word %>
-      <!--</div>-->
-        <%#= render 'public/tagsearches/tagform', content: @content %>
+      <%= flash[:notice] %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>

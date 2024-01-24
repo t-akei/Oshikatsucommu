@@ -31,12 +31,12 @@
           <% @posts.each do |post| %>
           <tr>
             <td>
-              <%= image_tag post.user.get_profile_image(80, 80) %><br>
+              <%= image_tag post.user.get_profile_image(50, 50) %><br>
               <%= post.user.name %>
             </td>
             <td>
               <%= link_to post_path(post) do %>
-                <%= post.title[0..8] %>
+                <%= truncate(post.title, length: 10, omision: "...") %>
               <% end %>
             </td>
             <td>
@@ -45,7 +45,7 @@
               <% end %>
             </td>
             <td><%= post.genre.name %></td>
-            <td><%= post.body[0..10] %></td>
+            <td><%= truncate(post.body, length: 15, omision: "...") %></td>
             <td><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
           </tr>
           <% end %>

@@ -29,13 +29,13 @@
           <tr>
             <td>
               <%= link_to user_path(bookmark.user) do %>
-                  <%= image_tag bookmark.user.get_profile_image(80, 80) %><br>
+                  <%= image_tag bookmark.user.get_profile_image(50, 50) %><br>
                   <%= bookmark.post.user.name %>
               <% end %>
             </td>
             <td>
               <%= link_to post_path(bookmark.post) do %>
-                <%= bookmark.post.title %>
+                <%= truncate(bookmark.post.title, length: 10, omision: "...") %>
               <% end %>
             </td>
             <td>

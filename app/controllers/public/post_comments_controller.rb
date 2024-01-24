@@ -3,7 +3,7 @@ class Public::PostCommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post_comments = @post.post_comments.order(created_at: :desc)
-    comment = @post.post_comments.new(post_comment_params)
+    comment = post.post_comments.new(post_comment_params)
     comment.user_id = current_user.id
     comment.save
     # redirect_to request.referer

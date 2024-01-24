@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   belongs_to :genre
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
   validates :body, presence: true, length: { maximum: 250 }
   validates :category, presence: true
   validates :genre_id, presence: true

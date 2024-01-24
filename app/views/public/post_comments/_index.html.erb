@@ -12,7 +12,6 @@
   <tbody>
     <% post_comments.each do |post_comment| %>
     <tr>
-      <!--<th></th>-->
       <td>
         <%= link_to user_path(post_comment.user) do %>
           <%= image_tag post_comment.user.get_profile_image(50, 40) %><br>
