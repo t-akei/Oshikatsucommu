@@ -3,11 +3,15 @@ class Public::PostCommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post_comments = @post.post_comments.order(created_at: :desc)
-    comment = post.post_comments.new(post_comment_params)
-    comment.user_id = current_user.id
-    comment.save
+    @post_comment = @post.post_comments.new(post_comment_params)
+    @post_comment.user_id = current_user.id
+    unless @post_comment.save
+      render 'error'
+    end
     # redirect_to request.referer
-    # create.jsファイルを探してもらう
+
+    # もしセーブできなかったらpublic/post_comments/error.jsファイルを探してもらう
+    # セーブできたらcreate.jsファイルを探してもらう
 
     # 上記３行の別の書き方↓
     # comment = PostComment.new(post_comment_params)
