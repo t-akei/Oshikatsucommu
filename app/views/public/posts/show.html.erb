@@ -68,14 +68,13 @@
       </table>
 
       <table>
-        <thead>
+        <tbody>
           <tr>
-            <td id="comment_error" class="justify-content-center">
+            <th></th>
+            <td id="comment_error">
               <%= render 'public/post_comments/error', post_comment: @post_comment %>
             </td>
           </tr>
-        </thead>
-        <tbody>
           <tr>
             <th>Comment</th>
             <td class="pl-3"><%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %></td>
