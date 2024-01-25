@@ -6,7 +6,7 @@ class Public::PostCommentsController < ApplicationController
     @post_comment = @post.post_comments.new(post_comment_params)
     @post_comment.user_id = current_user.id
     unless @post_comment.save
-      render 'error'
+      render 'public/post_comments/error'
     end
     # redirect_to request.referer
 

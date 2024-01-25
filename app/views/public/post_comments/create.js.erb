@@ -1,3 +1,10 @@
 $('#comment_textarea').val("");
 $('#comment_count').html("<%= j(render 'public/post_comments/count', post: @post) %>");
 $('#comment_index').html("<%= j(render 'public/post_comments/index', post_comments: @post_comments) %>");
+
+if ($('#comment_error').length) {
+  $('#comment_error').empty();
+}
+
+<!--id=comment_errorを持つ要素、バリデーションのエラーメッセージが表示されているかをチェック-->
+<!--もし存在してたらcomment_errorの子要素を削除する-->
