@@ -9,39 +9,36 @@
               <td><%= @post.user.id %></td>
             </tr>
             <tr>
-              <th class="col-md-2" bgcolor="#DDDDDD">ユーザー名</th>
+              <th bgcolor="#DDDDDD">ユーザー名</th>
               <td><%= @post.user.name %></td>
             </tr>
             <tr>
-              <th class="col-md-2" bgcolor="#DDDDDD">タイトル</th>
+              <th bgcolor="#DDDDDD">タイトル</th>
               <td><%= @post.title %></td>
             </tr>
             <tr>
-              <th class="col-md-2" bgcolor="#DDDDDD">タグ</th>
+              <th bgcolor="#DDDDDD">タグ</th>
               <td><%= @post.category %></td>
             </tr>
             <tr>
-              <th class="col-md-2" bgcolor="#DDDDDD">ジャンル</th>
+              <th bgcolor="#DDDDDD">ジャンル</th>
               <td><%= @post.genre.name %></td>
             </tr>
             <% if @post.post_image.attached? %>
             <tr>
-              <th class="col-md-2" bgcolor="#DDDDDD">画像</th>
+              <th bgcolor="#DDDDDD">画像</th>
               <td><%= image_tag @post.get_post_image %></td>
             </tr>
             <% end %>
             <tr>
-              <th class="col-md-2" bgcolor="#DDDDDD">本文</th>
+              <th bgcolor="#DDDDDD">本文</th>
               <td><%= @post.body %></td>
             </tr>
           </tbody>
         </table>
       </div>
+      <div class="col-md-3 offset-md-9">
+        <%= link_to '削除', admin_post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？", class:"btn btn-danger btn-lg" %>
+      </div>
     </div>
-</div>
-
-<div class="row justify-content-center">
-  <div class="col-md-4 offset-md-8">
-    <%= link_to '削除', admin_post_path(@post), method: :delete, "data-confirm" => "投稿を削除しますか？", class:"btn btn-danger btn-lg" %>
-  </div>
 </div>
