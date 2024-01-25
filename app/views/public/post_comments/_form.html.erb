@@ -1,6 +1,6 @@
 <!--コメントの投稿フォーム-->
 
 <%= form_with model: [post, post_comment], local: false do |f| %>
-  <%= f.text_area :comment, placeholder: "コメントは30文字までです", style:"height: 80px; width: 400px;", id:"comment_textarea" %>
+  <%= f.text_area :comment, placeholder: "コメントは50文字までです", style:"height: 80px; width: 400px;", id:"comment_textarea" %>
   <%= f.submit "Create comment" %>
 <% end %>

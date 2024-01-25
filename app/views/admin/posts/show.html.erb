@@ -14,7 +14,7 @@
             </tr>
             <tr>
               <th bgcolor="#DDDDDD">タイトル</th>
-              <td><%= @post.title %></td>
+              <td><%= simple_format(@post.title) %></td>
             </tr>
             <tr>
               <th bgcolor="#DDDDDD">タグ</th>
@@ -32,7 +32,7 @@
             <% end %>
             <tr>
               <th bgcolor="#DDDDDD">本文</th>
-              <td><%= @post.body %></td>
+              <td><%= simple_format(@post.body) %></td>
             </tr>
           </tbody>
         </table>
