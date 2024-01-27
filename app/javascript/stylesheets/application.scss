@@ -16,3 +16,9 @@
   display: flex;
   justify-content: center;
 }
+
+.info {
+  word-wrap: normal;
+  overflow-wrap: normal;
+  word-break: break-word;
+}

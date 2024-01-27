@@ -18,10 +18,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th>User name</th>
-            <th>Title</th>
-            <th>Tag</th>
-            <th>Genre</th>
+            <th class="col-md-2">User name</th>
+            <th class="col-md-4">Title</th>
+            <th >Tag</th>
+            <th class="col-md-2">Genre</th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
                 <%= @user.name %>
               <% end %>
             </td>
-            <td class="post"><%= simple_format(@post.title) %></td>
+            <td class="post"><%= @post.title %></td>
             <td><%= @post.category %></td>
             <td><%= @post.genre.name %></td>
           </tr>

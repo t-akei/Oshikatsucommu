@@ -1,18 +1,24 @@
 <!--User infoの部分テンプレートファイル-->
+<h3 class="text-center">User info</h3>
+<div class="col-md-6 mx-auto">
+  <%= image_tag user.get_profile_image(100, 100) %>
+</div>
 
-<h3>User info</h3>
-<tr><%= image_tag user.get_profile_image(100, 100) %></tr>
-<table class="table">
-  <tbody>
+<table class="table text-center">
+  <thead>
     <tr>
       <th>User name</th>
-      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <td class="info"><%= user.name %></td>
     </tr>
     <tr>
       <th>Introduction</th>
-      <td><%= simple_format(user.introduction) %></td>
     </tr>
-  </tbody>
+    <tr>
+      <td class="info"><%= simple_format(user.introduction) %></td>
+    </tr>
+  </thead>
 </table>
 
 <div class="row" id="test">
