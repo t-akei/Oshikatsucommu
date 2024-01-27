@@ -23,7 +23,7 @@
   </div>
 
     <div class="row justify-content-center mt-4">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <table class="table" rules="rows" border="3">
           <thead bgcolor="#DDDDDD">
             <tr>
@@ -33,7 +33,7 @@
           <tbody>
             <% @genres.each do |genre| %>
             <tr>
-              <td class="col-md-4 text-md-right"><%= genre.name %></td>
+              <td class="col-md-4 text-md-center info"><%= genre.name %></td>
               <td class="col-md-8">
                 <div class="d-flex justify-content-center">
                   <%= link_to '編集', edit_admin_genre_path(genre), class:"btn btn-warning btn-sm" %>
