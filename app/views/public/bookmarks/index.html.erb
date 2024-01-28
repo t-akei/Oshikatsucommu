@@ -29,7 +29,7 @@
           <% @bookmarks.each do |bookmark| %>
           <tr>
             <td>
-              <%= link_to user_path(bookmark.user) do %>
+              <%= link_to user_path(bookmark.post.user) do %>
                   <%= image_tag bookmark.user.get_profile_image(50, 50) %><br>
                   <%= bookmark.post.user.name %>
               <% end %>
