@@ -21,10 +21,15 @@
 
 ## 設計書
 
+
 ## 開発環境
 * OS：Ventura(MacOS)
 * 言語：HTML,CSS,Ruby,BootStrap,JavaScript,SQL
 * フレームワーク：Ruby on Rails
 * JSライブラリ：jQuery
 * IDE：Cloud9,EC2,RDS
+
+## 使用素材
+* イラストAC(フリーイラスト素材として使用)
+　https://www.ac-illust.com/
 
