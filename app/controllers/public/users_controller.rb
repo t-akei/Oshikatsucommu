@@ -7,17 +7,18 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.where(user_id: @user.id).order(created_at: :desc).page(params[:page]).per(7)
-    @genres = Genre.all
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
   end
 
   def edit
     @user = User.find(params[:id])
-    @genres = Genre.all
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
   end
 
   def update
     @user = User.find(params[:id])
-    @genres = Genre.all
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully"
       redirect_to user_path(@user)

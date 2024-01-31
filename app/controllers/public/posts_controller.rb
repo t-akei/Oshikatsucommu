@@ -5,13 +5,13 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @user = current_user
-    @genres = Genre.all
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
   end
 
   def create
     @post = Post.new(post_params)
     @user = current_user
-    @genres = Genre.all
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "You have created post successfully"
@@ -26,19 +26,22 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.order(created_at: :desc)
-    @genres = Genre.all
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
   end
 
   def index
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(5)
     @user = current_user
-    @genres = Genre.all
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
   end
 
   def edit
     @post = Post.find(params[:id])
     @user = current_user
-    @genres = Genre.all
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
   end
 
   def update

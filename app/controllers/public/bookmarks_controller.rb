@@ -18,7 +18,8 @@ class Public::BookmarksController < ApplicationController
   def index
     @bookmarks = Bookmark.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(5)
     @user = current_user
-    @genres = Genre.all
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
   end
 
   def destroy
