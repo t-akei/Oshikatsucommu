@@ -11,6 +11,8 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @genres = Genre.where.not(name: 'その他')
+    @other_genre = Genre.find_by(name: 'その他')
     @user = current_user
     @post.user_id = current_user.id
     if @post.save
