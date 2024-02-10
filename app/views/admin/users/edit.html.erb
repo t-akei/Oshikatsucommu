@@ -6,22 +6,22 @@
         <table class="table mt-3" rules="rows" border="3">
           <tbody>
             <tr>
-              <th class="col-md-4" bgcolor="#DDDDDD">ユーザーID</th>
+              <th class="col-md-4" style="background-color: #DDDDDD;">ユーザーID</th>
               <td class="col-md-2"></td>
               <td><%= @user.id %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">ユーザー名</th>
+              <th style="background-color: #DDDDDD;">ユーザー名</th>
               <td></td>
               <td><%= @user.name %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">メールアドレス</th>
+              <th style="background-color: #DDDDDD;">メールアドレス</th>
               <td></td>
               <td><%= @user.email %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">ステータスの変更</th>
+              <th style="background-color: #DDDDDD;">ステータスの変更</th>
               <td></td>
               <td>
                 <%= f.radio_button :is_active, :true %>
@@ -34,7 +34,7 @@
         <% end %>
         <%= form_with model: @user, url: admin_user_path(@user), method: :delete do |f| %>
             <tr>
-              <th bgcolor="#DDDDDD">ユーザーの削除</th>
+              <th style="background-color: #DDDDDD;">ユーザーの削除</th>
               <td></td>
               <td>
                 <%= f.submit "削除する", class:"btn btn-danger", "data-confirm" => "ユーザーを削除しますか？" %>
