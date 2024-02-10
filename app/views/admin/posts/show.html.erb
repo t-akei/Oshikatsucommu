@@ -5,33 +5,33 @@
         <table class="table mt-3" rules="rows" border="3">
           <tbody>
             <tr>
-              <th class="col-md-2" bgcolor="#DDDDDD">ユーザーID</th>
+              <th class="col-md-2" style="background-color: #DDDDDD;">ユーザーID</th>
               <td><%= @post.user.id %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">ユーザー名</th>
+              <th style="background-color: #DDDDDD;">ユーザー名</th>
               <td><%= @post.user.name %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">タイトル</th>
+              <th style="background-color: #DDDDDD;">タイトル</th>
               <td><%= simple_format(@post.title) %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">タグ</th>
+              <th style="background-color: #DDDDDD;">タグ</th>
               <td><%= @post.category %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">ジャンル</th>
+              <th style="background-color: #DDDDDD;">ジャンル</th>
               <td><%= @post.genre.name %></td>
             </tr>
             <% if @post.post_image.attached? %>
             <tr>
-              <th bgcolor="#DDDDDD">画像</th>
+              <th style="background-color: #DDDDDD;">画像</th>
               <td><%= image_tag @post.get_post_image %></td>
             </tr>
             <% end %>
             <tr>
-              <th bgcolor="#DDDDDD">本文</th>
+              <th style="background-color: #DDDDDD;">本文</th>
               <td><%= simple_format(@post.body) %></td>
             </tr>
           </tbody>

@@ -6,29 +6,29 @@
         <table class="table mt-3" rules="rows" border="3">
           <tbody>
             <tr>
-              <th class="col-md-3" bgcolor="#DDDDDD">ユーザーID</th>
+              <th class="col-md-3" style="background-color: #DDDDDD;">ユーザーID</th>
               <td class="col-md-3"></td>
               <td><%= @user.id %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">ユーザー名</th>
+              <th style="background-color: #DDDDDD;">ユーザー名</th>
               <td><%= image_tag @user.get_profile_image(60, 60) %></td>
               <td>
                 <%= @user.name %>
               </td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">メール<br>アドレス</th>
+              <th style="background-color: #DDDDDD;">メール<br>アドレス</th>
               <td></td>
               <td><%= @user.email %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">ユーザー<br>ステータス</th>
+              <th style="background-color: #DDDDDD;">ユーザー<br>ステータス</th>
               <td></td>
               <td><%= @user.user_status %></td>
             </tr>
             <tr>
-              <th bgcolor="#DDDDDD">ステータス変更</th>
+              <th style="background-color: #DDDDDD;">ステータス変更</th>
               <td></td>
               <td><%= link_to '変更する', edit_admin_user_path(@user), class:"btn btn-warning btn-sm" %></td>
             </tr>
@@ -39,7 +39,7 @@
       <div class="col-md-10">
         <table class="table mt-4">
           <thead>
-            <tr bgcolor="#DDDDDD">
+            <tr style="background-color: #DDDDDD;">
               <th>タイトル</th>
               <th class="col-md-2">タグ</th>
               <th class="col-md-2">ジャンル</th>
